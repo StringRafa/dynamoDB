@@ -26,7 +26,7 @@ public class ClientRepository {
     
     public Client save(Client client) {
 
-		log.info(String.format("Starting client registration CLIENT [%s]", client));
+		log.info(String.format("Starting client registration in repository. CLIENT [%s]", client));
     	
 		try {
 
@@ -36,16 +36,16 @@ public class ClientRepository {
 			throw new DynamoException(e.getErrorMessage(), TransactionTypeConstantUtils.SAVE_CLIENT_TRANSACTION);
 		}
 
-		log.info(String.format("Finished client registration CLIENT [%s]", client));
+		log.info(String.format("Finished client registration in repository. CLIENT [%s]", client));
         
         return client;
     }
     
-    public Client getFuncionarioById(String clientId) {
+    public Client getClientById(String clientId) {
 
-		log.info(String.format("Starting find client. CLIENT_ID [%s]", clientId));
+		log.info(String.format("Starting find client in repository. CLIENT_ID [%s]", clientId));
 
-		Client clientResponse= null;
+		Client clientResponse = null;
 		
 		try {
 			
@@ -54,15 +54,20 @@ public class ClientRepository {
 			
 			throw new DynamoException(e.getErrorMessage(), TransactionTypeConstantUtils.GET_CLIENT_TRANSACTION);
 		}
+		
+		if(clientResponse == null) {
+			
+			throw new DynamoException("Client not found.", TransactionTypeConstantUtils.GET_CLIENT_TRANSACTION);
+		}
 
-		log.info(String.format("Client found. CLIENT [%s]", clientResponse));    	
+		log.info(String.format("Client found finished in repository. CLIENT [%s]", clientResponse));    	
     	
         return clientResponse;
     }
     
     public String delete(String clientId) {
 
-		log.info(String.format("Starting delete client. CLIENT_ID [%s]", clientId));
+		log.info(String.format("Starting delete client in repository. CLIENT_ID [%s]", clientId));
     	
         try {
         	
@@ -73,14 +78,14 @@ public class ClientRepository {
 			throw new DynamoException(e.getErrorMessage(), TransactionTypeConstantUtils.DELETE_CLIENT_TRANSACTION);
 		}
 
-		log.info(String.format("Finished delete client . CLIENT_ID [%s]", clientId));  
+		log.info(String.format("Finished delete client in repository. CLIENT_ID [%s]", clientId));  
         
         return CLIENT_DELETE;
     }
     
 	public Client update(String clientId, Client client) {
 
-		log.info(String.format("Starting update client. CLIENT_ID [%s] - CLIENT_REQUEST [%s]", clientId, client));
+		log.info(String.format("Starting update client in repository. CLIENT_ID [%s] - CLIENT_REQUEST [%s]", clientId, client));
 		
 		try {
 
@@ -91,7 +96,7 @@ public class ClientRepository {
 			throw new DynamoException(e.getErrorMessage(), TransactionTypeConstantUtils.UPDATE_CLIENT_TRANSACTION);
 		}
 
-		log.info(String.format("Finished delete client . CLIENT_ID [%s]", clientId));  
+		log.info(String.format("Finished delete client in repository. CLIENT_ID [%s]", clientId));  
 		
 		return client;
 	}

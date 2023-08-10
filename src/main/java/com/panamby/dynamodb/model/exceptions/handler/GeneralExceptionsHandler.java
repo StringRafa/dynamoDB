@@ -27,10 +27,8 @@ public class GeneralExceptionsHandler extends ExceptionHandlerExceptionResolver 
 
 	log.error(String.format("ERROR_MESSAGE [%s]", ex.getMessage()));
 	
-	return new ResponseEntity<>(
-		new DynamoGeneralErrorResponse(new DynamoGeneralDataErrorResponse(
-			"Unexpected error occurs", "Internal server error.", StatusConstantUtils.FAIL)),
-		httpStatus);
+	return new ResponseEntity<>(new DynamoGeneralErrorResponse(new DynamoGeneralDataErrorResponse(
+			"Unexpected error occurs", "Internal server error.", StatusConstantUtils.FAIL)), httpStatus);
     }
 
     @ExceptionHandler(DynamoException.class)
@@ -41,10 +39,8 @@ public class GeneralExceptionsHandler extends ExceptionHandlerExceptionResolver 
 
 	log.error(String.format("ERROR_MESSAGE [%s] - TRANSACTION_TYPE [%s]", ex.getMessage(), ex.getTransactionType()));
 	
-	return new ResponseEntity<>(
-		new DynamoGeneralErrorResponse(new DynamoGeneralDataErrorResponse(
-			"Unprocessable Entity", ex.getMessage(), StatusConstantUtils.FAIL)),
-		httpStatus);
+	return new ResponseEntity<>(new DynamoGeneralErrorResponse(new DynamoGeneralDataErrorResponse(
+				"Bad Request", ex.getMessage(), StatusConstantUtils.FAIL)),	httpStatus);
     }
    
 }

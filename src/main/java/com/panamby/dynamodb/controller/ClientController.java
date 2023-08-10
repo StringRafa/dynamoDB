@@ -43,7 +43,7 @@ public class ClientController {
 
 		log.info(String.format("Starting find client. CLIENT_ID [%s]", clientId));
 
-		Client clientResponse = service.getFuncionarioById(clientId);
+		Client clientResponse = service.getClientById(clientId);
 
 		log.info(String.format("Client found. CLIENT [%s]", clientResponse));
 
