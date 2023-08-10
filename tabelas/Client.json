@@ -1,0 +1,49 @@
+{
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "name",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "hasCard",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "lastValue",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "name",
+      "KeyType": "HASH"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 1,
+    "WriteCapacityUnits": 1
+  },
+  "TableName": "Client",
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "indexClient",
+      "KeySchema": [
+        {
+          "AttributeName": "hasCard",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "lastValue",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+      }
+    }
+  ]
+}
