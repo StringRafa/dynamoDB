@@ -41,7 +41,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8091/client/v1/5521900000000",
+					"raw": "http://localhost:8091/client/v1/Rafael",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -50,7 +50,7 @@
 					"path": [
 						"client",
 						"v1",
-						"5521900000000"
+						"Rafael"
 					]
 				}
 			},
