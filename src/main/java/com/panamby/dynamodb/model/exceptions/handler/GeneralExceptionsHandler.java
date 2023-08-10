@@ -37,7 +37,7 @@ public class GeneralExceptionsHandler extends ExceptionHandlerExceptionResolver 
     public ResponseEntity<Object> handleDynamoException(DynamoException ex,
 	    HttpServletRequest request) {
 
-	HttpStatus httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+	HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
 	log.error(String.format("ERROR_MESSAGE [%s] - TRANSACTION_TYPE [%s]", ex.getMessage(), ex.getTransactionType()));
 	

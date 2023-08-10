@@ -32,7 +32,7 @@ public class ClientService {
 		
 		if(!clientId.equals(client.getName())) {
 			
-			throw new DynamoException("Body's id is different from URI's id", TransactionTypeConstantUtils.UPDATE_TRANSACTION);
+			throw new DynamoException("Body's id is different from URI's id", TransactionTypeConstantUtils.UPDATE_CLIENT_TRANSACTION);
 		}		
 		
 	    clientRepository.update(clientId, client);
